@@ -21,9 +21,6 @@ namespace Example2
             _obj = obj;
         }
 
-        public IMaybe<U> Bind<U>(Func<T, IMaybe<U>> func)
-            => func(_obj);
-
         public IMaybe<U> Map<U>(Func<T, U> func)
             => new Something<U>(func(_obj));
 
@@ -41,8 +38,6 @@ namespace Example2
 
     class Nothing<T> : IMaybe<T>
     {
-        public IMaybe<U> Bind<U>(Func<T, IMaybe<U>> func)
-            => new Nothing<U>();
 
         public IMaybe<U> Map<U>(Func<T, U> func)
             => new Nothing<U>();
@@ -69,11 +64,4 @@ namespace Example2
         public static bool IsEven(this int num)
             => num % 2 == 0;
     }
-
-  //  new List<string>()
-  //.Head()
-  //.Do(
-  //  just => Console.WriteLine("The head was " + just),
-  //  () => Console.WriteLine("Cannot take the head of an empty list"));
-
 }

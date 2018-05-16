@@ -10,15 +10,15 @@ namespace Example2
     {
         static void Main(string[] args)
         {
-            NonFunctional();
-            //Functional();
+            //NonFunctional();
+            Functional();
         }
 
         static void NonFunctional()
         {
             var strings = new List<string>
             {
-                "cat", "chair", "floor", "something"//, "computer"
+                "cat", "chair", "floor", "something", "computer"
             };
 
             var firstEvenString = strings.Where(s => s.Length.IsEven()).FirstOrDefault();
@@ -43,7 +43,7 @@ namespace Example2
                 .Head()
                 .Do(
                     head => Console.WriteLine($"Head is {head}"),
-                    () => Console.WriteLine($"No head of an empty list"));
+                    () => Console.WriteLine($"No head of an empty list")); // Forced "else" case for null check
         }
     }
 }
